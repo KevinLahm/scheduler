@@ -1,77 +1,125 @@
 <!-- Section: intro -->
-<section id="intro" class="intro">
+<section id="intro" class="intro" style="margin-top: -30px;">
   <div class="intro-content">
     <div class="container">
       <div class="row">
-
-        <div class="col-lg-6">
-          <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-            <h2 class="h-ultra">Scheduler</h2>
-          </div>
-
-          <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
-            <h4 class="h-light">Tracking <span style="color: #2778bd;"> medical appointments</span> for you.</h4>
-          </div>
-
-          <div class="well well-trans">
-            <div class="wow fadeInRight" data-wow-delay="0.1s">
-              <ul class="lead-list">
-                <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Book Appointments Easily</strong><br />Provide details in the form <i class="fa fa-hand-o-right"></i></span></li>
-                <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Choose your favourite doctor(s)</strong><br />Provide the doctor's service number.</span></li>
-              </ul>
+        <% if current_user %>
+          <div class="col-lg-6">
+            <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+              <h4 class="h-ultra">User Dashboard</h4>
+            </div>
+            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
+              <h5 class="h-light">
+                Welcome,&ensp;
+                <span style="color: #2778bd;">
+                  <%= current_user.first_name %> <%= current_user.last_name %>
+                </span>
+              </h5>
+              <h6 class="h-light">
+                <%= link_to "Sign Out", destroy_user_session_path, :class => "custom_button", method: :delete %>
+              </h6>
+            </div>
+            <div class="well well-trans">
+              <div class="wow fadeInRight" data-wow-delay="0.1s">
+                <ul class="lead-list">
+                  <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Book Appointments Easily</strong><br />Provide details in the form <i class="fa fa-hand-o-right"></i></span></li>
+                  <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Choose your favourite doctor(s)</strong><br />Choose doctors from the list.</span></li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="form-wrapper">
-            <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
-              <div class="panel panel-skin">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><span class="fa fa-pencil-square-o"></span> Make an appoinment <small>(It's free!)</small></h3>
-                </div>
-
-                <div class="panel-body">
-                  <form role="form" class="lead">
-                    <div class="row">
-                      <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                          <label>First Name</label>
-                          <input type="text" name="first_name" id="first_name" class="form-control input-md">
+          <div class="col-lg-6">
+            <div class="form-wrapper">
+              <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+                <div class="panel panel-skin">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <span class="fa fa-pencil-square-o"></span> 
+                      Make an appoinment <small>(It's free!)</small>
+                    </h3>
+                  </div>
+                  <div class="panel-body">
+                    <form role="form" class="lead">
+                      <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="first_name" id="first_name" class="form-control input-md">
+                          </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control input-md">
+                          </div>
                         </div>
                       </div>
-                      <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                          <label>Last Name</label>
-                          <input type="text" name="last_name" id="last_name" class="form-control input-md">
+                      <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" id="email" class="form-control input-md">
+                          </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="form-group">
+                            <label>Phone number</label>
+                            <input type="text" name="phone" id="phone" class="form-control input-md">
+                          </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                          <label>Email</label>
-                          <input type="email" name="email" id="email" class="form-control input-md">
-                        </div>
-                      </div>
-                      <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                          <label>Phone number</label>
-                          <input type="text" name="phone" id="phone" class="form-control input-md">
-                        </div>
-                      </div>
-                    </div>
-                    <input type="submit" value="Submit" class="btn btn-skin btn-block btn-lg">
-                    <p class="lead-footer">* We'll contact you by phone & email later</p>
-                  </form>
-                </div>
-
-              </div>        
+                      <input type="submit" value="Submit" class="btn btn-skin btn-block btn-lg">
+                      <p class="lead-footer">* We'll contact you by phone & email later</p>
+                    </form>
+                  </div>
+                </div>        
+              </div>
             </div>
           </div>
-        </div>
-
+        <% else %>
+          <div class="col-lg-6">
+            <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+              <h2 class="h-ultra">Scheduler</h2>
+            </div>
+            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
+              <h4 class="h-light">Tracking <span style="color: #2778bd;"> medical appointments</span> for you.</h4>
+            </div>
+            <div class="well well-trans">
+              <div class="wow fadeInRight" data-wow-delay="0.1s">
+                <ul class="lead-list">
+                  <li>
+                    <span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>If You Want To Book Appointments</strong><br />Login To Continue <i class="fa fa-hand-o-right"></i></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-wrapper">
+              <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+                <div class="panel panel-skin">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <span class="fa fa-sign-in"></span>
+                      Login To Make Appointments 
+                    </h3>
+                  </div>
+                  <div class="panel-body">
+                    <form role="form" class="lead">
+                      <span style="margin-bottom:40px;margin-top: 40px;">
+                        <%= link_to "LOGIN", new_user_session_path, :class => "btn btn-skin btn-block btn-lg" %>
+                      </span>
+                      <h5 class="lead-footer">
+                        <span style="color:#ef3b23;">* </span>Don't Have An Account??&emsp; 
+                        <%= link_to "Sign Up Now!!", new_user_registration_path, :class => "custom_button" %>
+                      </h5>
+                    </form>
+                  </div>
+                </div>        
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>    
     </div>
   </div>    
@@ -126,7 +174,6 @@
 </section>
 <!-- /Section: boxes -->
 
-
 <section id="callaction" class="home-section paddingtop-40" style="padding-bottom: 50px;">  
   <div class="container">
     <div class="row">
@@ -154,5 +201,3 @@
     </div>
   </div>
 </section>  
-
-

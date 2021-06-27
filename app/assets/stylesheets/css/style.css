@@ -165,15 +165,19 @@ p.ultra {
 }
 
 a {
-    color: #666;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
+  color: #fff;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
-a:hover,
+a:hover {
+  color: #f3f7fb;
+  text-decoration: none;
+}
+
 a:focus {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 blockquote {
@@ -768,11 +772,22 @@ ul.lead-list li span.list {
   margin: 0 0 0 10px;
 }
 
-p.lead-footer {
-  font-size: 16px;
-  margin: 20px 0 0;
+.lead-footer {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 40px;
+  margin: 40px 0 0;
 }
 
+.custom_button {
+  background-color: #2778bd;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.custom_button:hover {
+  background-color: #6ba5d7;
+}
 
 .panel-heading {
   padding: 20px;
@@ -787,8 +802,8 @@ p.lead-footer {
 
 .panel-skin > .panel-heading {
   color: #fff;
-  background-color: #083b66;
-  border-color: #444;
+  background-color: #2778bd;
+  border-color: #2778bd;
   box-shadow: none;
 }
 
