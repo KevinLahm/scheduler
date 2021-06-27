@@ -1,200 +1,221 @@
-(function ($)
-  { "use strict"
+/*global jQuery:false */
+(function ($) {
+
+  var wow = new WOW(
+    {
+    boxClass:     'wow',      // animated element css class (default is wow)
+    animateClass: 'animated', // animation css class (default is animated)
+    offset:       0,          // distance to the element when triggering the animation (default is 0)
+    mobile:       false       // trigger animations on mobile devices (true is default)
+    }
+  );
+  wow.init();
+
+  //jQuery to collapse the navbar on scroll
+  $(window).scroll(function() {
+    if ($(".navbar").offset().top > 50) {
+      $(".navbar-fixed-top").addClass("top-nav-collapse");
+      $(".top-area").addClass("top-padding");
+      $(".navbar-brand").addClass("reduce");
+
+      $(".navbar-custom ul.nav ul.dropdown-menu").css("margin-top","11px");
+    
+    } else {
+      $(".navbar-fixed-top").removeClass("top-nav-collapse");
+      $(".top-area").removeClass("top-padding");
+      $(".navbar-brand").removeClass("reduce");
+
+      $(".navbar-custom ul.nav ul.dropdown-menu").css("margin-top","16px");
   
-/* slick Nav */
-// mobile_menu
-var menu = $('ul#navigation');
-if(menu.length){
-  menu.slicknav({
-    prependTo: ".mobile_menu",
-    closedSymbol: '+',
-    openedSymbol:'-'
-  });
-};
-
-/* MainSlider-1 */
-function mainSlider() {
-  var BasicSlider = $('.slider-active');
-  BasicSlider.on('init', function (e, slick) {
-    var $firstAnimatingElements = $('.single-slider:first-child').find('[data-animation]');
-    doAnimations($firstAnimatingElements);
-  });
-  BasicSlider.on('beforeChange', function (e, slick, currentSlide, nextSlide) {
-    var $animatingElements = $('.single-slider[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
-    doAnimations($animatingElements);
-  });
-  BasicSlider.slick({
-    autoplay: false,
-    autoplaySpeed: 10000,
-    dots: false,
-    fade: true,
-    arrows: false,
-    prevArrow: '<button type="button" class="slick-prev"><i class="ti-shift-left"></i></button>',
-    nextArrow: '<button type="button" class="slick-next"><i class="ti-shift-right"></i></button>',
-    responsive: [{
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-        }
-      },
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false
-        }
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false
-        }
-      }
-    ]
-  });
-
-  function doAnimations(elements) {
-    var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-    elements.each(function () {
-      var $this = $(this);
-      var $animationDelay = $this.data('delay');
-      var $animationType = 'animated ' + $this.data('animation');
-      $this.css({
-        'animation-delay': $animationDelay,
-        '-webkit-animation-delay': $animationDelay
-      });
-      $this.addClass($animationType).one(animationEndEvents, function () {
-        $this.removeClass($animationType);
-      });
-    });
-  }
-}
-mainSlider();
-
-/* Applic App */
-var client_list = $('.app-active');
-if(client_list.length){
-  client_list.owlCarousel({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    loop: true,
-    autoplay:true,
-    speed: 3000,
-    smartSpeed:2000,
-    dots: false,
-    margin: 15,
-    nav  : false,
-    navText : ["<i class='fas fa-arrow-left'></i>","<i class='fas fa-arrow-right'></i>"],
-    autoplayHoverPause: true,
-    responsive : {
-      0 : {
-        items: 1
-      },
-      768 : {
-        items: 2
-      },
-      992 : {
-        items: 2
-      },
-      1200:{
-        items: 4
-      }
     }
   });
-}
-
-// Pop Up Window
-$(window).load(function () {
-    $(".trigger_popup_fricc").click(function(){
-      $('.hover_bkgr_fricc').show();
-    });
-    $('.hover_bkgr_fricc').click(function(){
-      $('.hover_bkgr_fricc').hide();
-    });
-    $('.popupCloseButton').click(function(){
-      $('.hover_bkgr_fricc').hide();
-    });
-});
-
-$(window).load(function () {
-    $(".trigger_popup_fricc2").click(function(){
-      $('.hover_bkgr_fricc2').show();
-    });
-    $('.hover_bkgr_fricc2').click(function(){
-      $('.hover_bkgr_fricc2').hide();
-    });
-    $('.popupCloseButton').click(function(){
-      $('.hover_bkgr_fricc2').hide();
-    });
-});
-
-$(window).load(function () {
-    $(".trigger_popup_fricc3").click(function(){
-      $('.hover_bkgr_fricc3').show();
-    });
-    $('.hover_bkgr_fricc3').click(function(){
-      $('.hover_bkgr_fricc3').hide();
-    });
-    $('.popupCloseButton').click(function(){
-      $('.hover_bkgr_fricc3').hide();
-    });
-});
-
-/* Nice Selectorp  */
-var nice_Select = $('select');
-  if(nice_Select.length){
-    nice_Select.niceSelect();
-  }
-
-/* Custom Sticky Menu  */
-$(window).on('scroll', function () {
-  var scroll = $(window).scrollTop();
-  if (scroll < 245) {
-    $(".header-sticky").removeClass("sticky-bar");
-  } else {
-    $(".header-sticky").addClass("sticky-bar");
-  }
-});
-
-$(window).on('scroll', function () {
-  var scroll = $(window).scrollTop();
-  if (scroll < 245) {
-    $(".header-sticky").removeClass("sticky");
-  } else {
-    $(".header-sticky").addClass("sticky");
-  }
-});
-
-/* sildeBar scroll */
-$.scrollUp({
-  scrollName: 'scrollUp',
-  topDistance: '300', 
-  topSpeed: 300, 
-  animation: 'fade', 
-  animationInSpeed: 200, 
-  animationOutSpeed: 200, 
-  scrollText: "↑",
-  activeOverlay: false,
-});
-
-/* data-background */
-$("[data-background]").each(function () {
-  $(this).css("background-image", "url(" + $(this).attr("data-background") + ")")
+  
+  //scroll to top
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 100) {
+      $('.scrollup').fadeIn();
+      } else {
+      $('.scrollup').fadeOut();
+    }
   });
+  $('.scrollup').click(function(){
+    $("html, body").animate({ scrollTop: 0 }, 1000);
+      return false;
+  });
+  
 
-// Pop Up Img
-var popUp = $('.single_gallery_part, .img-pop-up');
-  if(popUp.length){
-    popUp.magnificPopup({
-      type: 'image',
-      gallery:{
-        enabled:true
+
+  //jQuery for page scrolling feature - requires jQuery Easing plugin
+  $(function() {
+    $('.navbar-nav li a').bind('click', function(event) {
+      var $anchor = $(this);
+      var nav = $($anchor.attr('href'));
+      if (nav.length) {
+      $('html, body').stop().animate({        
+        scrollTop: $($anchor.attr('href')).offset().top       
+      }, 1500, 'easeInOutExpo');
+      
+      event.preventDefault();
       }
     });
-  }
+    $('.page-scroll a').bind('click', function(event) {
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top
+      }, 1500, 'easeInOutExpo');
+      event.preventDefault();
+    });
+  });
+
+  //owl carousel
+  $('#owl-works').owlCarousel({
+            items : 4,
+            itemsDesktop : [1199,5],
+            itemsDesktopSmall : [980,5],
+            itemsTablet: [768,5],
+            itemsTabletSmall: [550,2],
+            itemsMobile : [480,2],
+  });
+  
+  //nivo lightbox
+  $('.owl-carousel .item a').nivoLightbox({
+    effect: 'fadeScale',                             // The effect to use when showing the lightbox
+    theme: 'default',                           // The lightbox theme to use
+    keyboardNav: true,                          // Enable/Disable keyboard navigation (left/right/escape)
+    clickOverlayToClose: true,                  // If false clicking the "close" button will be the only way to close the lightbox
+    onInit: function(){},                       // Callback when lightbox has loaded
+    beforeShowLightbox: function(){},           // Callback before the lightbox is shown
+    afterShowLightbox: function(lightbox){},    // Callback after the lightbox is shown
+    beforeHideLightbox: function(){},           // Callback before the lightbox is hidden
+    afterHideLightbox: function(){},            // Callback after the lightbox is hidden
+    onPrev: function(element){},                // Callback when the lightbox gallery goes to previous item
+    onNext: function(element){},                // Callback when the lightbox gallery goes to next item
+    errorMessage: 'The requested content cannot be loaded. Please try again later.' // Error message when content can't be loaded
+  });
+
+  jQuery('.appear').appear();
+  jQuery(".appear").on("appear", function(data) {
+      var id = $(this).attr("id");
+      jQuery('.nav li').removeClass('active');
+      jQuery(".nav a[href='#" + id + "']").parent().addClass("active");         
+    });
+
+    
+    //parallax
+        if ($('.parallax').length)
+        {
+      $(window).stellar({
+        responsive:true,
+                scrollProperty: 'scroll',
+                parallaxElements: false,
+                horizontalScrolling: false,
+                horizontalOffset: 0,
+                verticalOffset: 0
+            });
+
+        }
+    
+    
+(function ($, window, document, undefined) {
+
+    var gridContainer = $('#grid-container'),
+        filtersContainer = $('#filters-container');
+
+  // init cubeportfolio
+    gridContainer.cubeportfolio({
+
+        defaultFilter: '*',
+
+        animationType: 'sequentially',
+
+        gapHorizontal: 50,
+
+        gapVertical: 40,
+
+        gridAdjustment: 'responsive',
+
+        caption: 'fadeIn',
+
+        displayType: 'lazyLoading',
+
+        displayTypeSpeed: 100,
+
+        // lightbox
+        lightboxDelegate: '.cbp-lightbox',
+        lightboxGallery: true,
+        lightboxTitleSrc: 'data-title',
+        lightboxShowCounter: true,
+
+        // singlePage popup
+        singlePageDelegate: '.cbp-singlePage',
+        singlePageDeeplinking: true,
+        singlePageStickyNavigation: true,
+        singlePageShowCounter: true,
+        singlePageCallback: function (url, element) {
+
+            // to update singlePage content use the following method: this.updateSinglePage(yourContent)
+            var t = this;
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                timeout: 5000
+            })
+            .done(function(result) {
+                t.updateSinglePage(result);
+            })
+            .fail(function() {
+                t.updateSinglePage("Error! Please refresh the page!");
+            });
+
+        },
+
+        // singlePageInline
+        singlePageInlineDelegate: '.cbp-singlePageInline',
+        singlePageInlinePosition: 'above',
+        singlePageInlineShowCounter: true,
+        singlePageInlineInFocus: true,
+        singlePageInlineCallback: function(url, element) {
+            // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
+        }
+    });
+
+    // add listener for filters click
+    filtersContainer.on('click', '.cbp-filter-item', function (e) {
+
+        var me = $(this), wrap;
+
+        // get cubeportfolio data and check if is still animating (reposition) the items.
+        if ( !$.data(gridContainer[0], 'cubeportfolio').isAnimating ) {
+
+            if ( filtersContainer.hasClass('cbp-l-filters-dropdown') ) {
+                wrap = $('.cbp-l-filters-dropdownWrap');
+
+                wrap.find('.cbp-filter-item').removeClass('cbp-filter-item-active');
+
+                wrap.find('.cbp-l-filters-dropdownHeader').text(me.text());
+
+                me.addClass('cbp-filter-item-active');
+            } else {
+                me.addClass('cbp-filter-item-active').siblings().removeClass('cbp-filter-item-active');
+            }
+
+        }
+
+        // filter the items
+        gridContainer.cubeportfolio('filter', me.data('filter'), function () {});
+
+    });
+
+    // activate counter for filters
+    gridContainer.cubeportfolio('showCounter', filtersContainer.find('.cbp-filter-item'));
+
+})(jQuery, window, document);
+    
+  
 })(jQuery);
+$(window).load(function() {
+  $(".loader").delay(100).fadeOut();
+  $("#page-loader").delay(100).fadeOut("fast");
+});
