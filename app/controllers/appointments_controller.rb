@@ -2,8 +2,8 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[ show edit update destroy ]
 
   def index
-    @appointments = Appointment.all
-    @users = User.all
+    @appointments = current_user.appointments.all if current_user
+    # @appointments = Appointment.all
   end
 
   def show
@@ -42,10 +42,8 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
-    respond_to do |format|
-      format.html { redirect_to appointments_url, notice: "Appointment was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:success] =  'Appointment Successfully Erased!'
+    redirect_to '/appointments/#myappointments'
   end
 
   private

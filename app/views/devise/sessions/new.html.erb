@@ -9,17 +9,10 @@
           <h5>Login To Get Started</h5>
           <h5 style="font-size: 15px;">
             <a href="/" class="custom_button"><i class="fa fa-arrow-left"></i> Go Back</a>
-          </h5>
+          </h5>    
 
-          <% if @user.errors.any? %>
-            <div class='alert alert-danger'>
-              <p>Please correct the following errors:</p>
-              <ul>
-                <% @user.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
+          <% if flash[:alert] %>
+            <div class='alert alert-danger'><%= flash[:alert] %></div>
           <% end %>
 
         </div>
