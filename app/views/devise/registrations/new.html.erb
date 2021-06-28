@@ -1,44 +1,155 @@
-<h2>Sign up</h2>
+<!-- Section: intro -->
+<section id="intro" class="intro" style="margin-top: -30px;">
+  <div class="intro-content">
+    <div class="container" style="background-color: rgb(152, 231, 220, 0.4);padding: 20px;">
+      <div class="row">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="col-md-5 col-lg-4 mb-5 mb-md-1">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <h5>Register To Get Started</h5>
+          <h5 style="font-size: 15px;">
+            <a href="/" class="custom_button"><i class="fa fa-arrow-left"></i> Go Back</a>
+          </h5>
+
+          <% if @user.errors.any? %>
+            <div class='alert alert-danger'>
+              <p>Please correct the following errors:</p>
+              <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        </div>
+
+        <div class="col-md-6 col-lg-5">
+          <div class="form-wrapper">
+            <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+              <div class="panel panel-skin">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    <span class="fa fa-user"></span> 
+                    Sign Up!
+                  </h3>
+                </div>
+                <div class="panel-body">
+
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <div class='form-group'>
+                      <%= f.text_field :first_name, class: 'form-control input-md', placeholder: 'First Name' %>
+                    </div>
+                    <div class='form-group'>
+                      <%= f.text_field :last_name, class: 'form-control input-md', placeholder: 'Last Name' %>
+                    </div>
+                    <div class='form-group'>
+                      <%= f.text_field :phone_no, class: 'form-control input-md', placeholder: 'Phone Number' %>
+                    </div>
+                    <div class='form-group'>
+                      <%= f.email_field :email, class: 'form-control input-md', placeholder: 'Email' %>
+                    </div>
+                    <div class='form-group'>
+                      <% if @minimum_password_length %>
+                        <em>(<%= @minimum_password_length %> characters minimum)</em>
+                      <% end %><br />
+                      <%= f.password_field :password, class: 'form-control input-md', placeholder: 'Password', autocomplete: 'new-password'  %>
+                    </div>
+                    <div class='form-group'>
+                      <%= f.password_field :password_confirmation, class: 'form-control input-md', placeholder: 'Confirm Password', autocomplete: 'new-password' %>
+                    </div>
+                    
+                    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+                  <% end %>
+
+                  <h5 class="lead-footer">
+                    <span style="color:#ef3b23;">* </span>Already Registered??&emsp; 
+                    <%= link_to "Login!!", new_user_session_path, :class => "custom_button" %>
+                  </h5>
+
+                </div>
+              </div>        
+            </div>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>    
+</section>
+<!-- /Section: intro -->
+
+<!-- Section: boxes -->
+<section id="boxes" class="home-section paddingtop-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 col-md-3">
+        <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <div class="box text-center">
+            <i class="fa fa-check fa-3x circled bg-skin"></i>
+            <h4 class="h-bold">Appoinment</h4>
+            <p>It's easy to make and track appointments with us.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3 col-md-3">
+        <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <div class="box text-center">
+            
+            <i class="fa fa-ambulance fa-3x circled bg-skin"></i>
+            <h4 class="h-bold">Emergencies</h4>
+            <p>Call us using our emergency numbers or click the button below. <i class="fa fa-hand-o-down"></i></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-md-3">
+        <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <div class="box text-center">
+            <i class="fa fa-user-md fa-3x circled bg-skin"></i>
+            <h4 class="h-bold">Our Doctors</h4>
+            <p>Choose your most favourite doctor(s) to handle your case.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-md-3">
+        <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <div class="box text-center">
+            
+            <i class="fa fa-hospital-o fa-3x circled bg-skin"></i>
+            <h4 class="h-bold">Diagnostic report</h4>
+            <p>Get your diagnostic report within 12 hours of enquiry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+<!-- /Section: boxes -->
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+<section id="callaction" class="home-section paddingtop-40" style="padding-bottom: 50px;">  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="callaction bg-gray">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="wow fadeInUp" data-wow-delay="0.1s">
+                <div class="cta-text">
+                  <h3>In An Emergency?</h3>
+                  <p>Click The Call Us Now Button <i class="fa fa-hand-o-right"></i> Right Away!</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="wow lightSpeedIn" data-wow-delay="0.1s">
+                <div class="cta-btn">
+                  <a href="#" class="btn btn-skin btn-lg">Call Us Now</a>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_no %><br />
-    <%= f.text_field :phone_no, autofocus: true, autocomplete: "phone_no" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>  
