@@ -775,7 +775,8 @@ ul.lead-list li span.list {
 .lead-footer {
   font-size: 18px;
   font-weight: bold;
-  padding-bottom: 40px;
+  padding-top: 50px;
+  padding-bottom: 5px;
   margin: 40px 0 0;
 }
 

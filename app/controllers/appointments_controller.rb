@@ -3,6 +3,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.all
+    @users = User.all
   end
 
   def show
@@ -18,14 +19,11 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
 
-    respond_to do |format|
-      if @appointment.save
-        format.html { redirect_to @appointment, notice: "Appointment was successfully created." }
-        format.json { render :show, status: :created, location: @appointment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @appointment.errors, status: :unprocessable_entity }
-      end
+    if @appointment.save
+      flash[:success] =  "Appointment Booked! We'll Get To You Soon"
+      redirect_to '/'
+    else
+      render :new
     end
   end
 

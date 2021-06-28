@@ -22,8 +22,7 @@
             <div class="well well-trans">
               <div class="wow fadeInRight" data-wow-delay="0.1s">
                 <ul class="lead-list">
-                  <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Book Appointments Easily</strong><br />Provide details in the form <i class="fa fa-hand-o-right"></i></span></li>
-                  <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Choose your favourite doctor(s)</strong><br />Choose doctors from the list.</span></li>
+                  <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Book Appointments Easily</strong><br />Click The Button To Proceed! <i class="fa fa-hand-o-right"></i></span></li>
                 </ul>
               </div>
             </div>
@@ -35,41 +34,20 @@
                   <div class="panel-heading">
                     <h3 class="panel-title">
                       <span class="fa fa-pencil-square-o"></span> 
-                      Make an appoinment <small>(It's free!)</small>
+                      Book an appoinment Now! <small>(It's free!)</small>
                     </h3>
                   </div>
                   <div class="panel-body">
-                    <form role="form" class="lead">
-                      <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                          <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" name="first_name" id="first_name" class="form-control input-md">
-                          </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                          <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" name="last_name" id="last_name" class="form-control input-md">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                          <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" id="email" class="form-control input-md">
-                          </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                          <div class="form-group">
-                            <label>Phone number</label>
-                            <input type="text" name="phone" id="phone" class="form-control input-md">
-                          </div>
-                        </div>
-                      </div>
-                      <input type="submit" value="Submit" class="btn btn-skin btn-block btn-lg">
-                      <p class="lead-footer">* We'll contact you by phone & email later</p>
+                    <% if flash[:success] %>
+                      <div class='alert alert-success'><%= flash[:success] %></div>
+                    <% end %>
+                    <form role="form" class="lead" style="padding-top: 40px;">
+                      <a href="appointments" class="btn btn-skin btn-block btn-lg">
+                        Book Now!
+                        <i class="fa fa-arrow-right"></i>
+                      </a>
+                      <p class="lead-footer"><span style="color: #ef3b23;">* </span> 
+                      We'll contact you by phone & email later</p>
                     </form>
                   </div>
                 </div>        
