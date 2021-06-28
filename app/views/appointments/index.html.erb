@@ -31,15 +31,12 @@
 
                   <%= form_for Appointment.new, url: {action: "create"} do |f| %>
                     <div class='form-group'>
-                      <%= f.text_field :doc_email, class: 'form-control input-md', placeholder: 'Choose Doctor' %>
+                      <%= f.text_field :doctor_id, class: 'form-control input-md', placeholder: 'Choose Doctor' %>
                     </div>
 
                     <div class='form-group'>
-                      <%= f.hidden_field :user_first_name, :value => current_user.first_name %>
-                      <%= f.hidden_field :user_last_name, :value => current_user.last_name %>
-                      <%= f.hidden_field :user_email, :value => current_user.email %>
-                      <%= f.hidden_field :user_phone_no, :value => current_user.phone_no %>
                       <%= f.hidden_field :booking_time, :value => Time.now %>
+                      <%= f.hidden_field :user_id, :value => current_user.id %>
                     </div>
               
                     <%= f.submit 'Book!', class: 'btn btn-primary' %>

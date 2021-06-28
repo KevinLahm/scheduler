@@ -9,6 +9,6 @@ class User < ApplicationRecord
   validates :phone_no, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
 
-  has_many :doctors
-  has_many :appointments, through: :doctors
+  has_many :appointments
+  has_many :doctors, through: :appointments
 end

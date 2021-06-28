@@ -42,12 +42,9 @@ ActiveRecord::Schema.define(version: 2021_06_28_140822) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.string "user_first_name"
-    t.string "user_last_name"
-    t.string "user_email"
-    t.string "user_phone_no"
-    t.string "doc_email"
     t.string "booking_time"
+    t.string "user_id"
+    t.string "doctor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -57,8 +54,6 @@ ActiveRecord::Schema.define(version: 2021_06_28_140822) do
     t.string "last_name"
     t.string "email"
     t.string "phone_no"
-    t.string "user_id"
-    t.string "appointment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

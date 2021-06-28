@@ -5,13 +5,10 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "APPOINTMENTS" do
-          table_for Appointment.all.order('user_first_name asc').limit(5).each do |appointment|
-            column (:user_first_name) {|appointment| link_to(appointment.user_first_name, admin_appointment_path(appointment))}
-            column :user_last_name
-            column :user_email
-            column :user_phone_no
-            column :doc_email
-            column :booking_time          
+          table_for Appointment.all.order('id asc').limit(5).each do |appointment|
+            column :booking_time
+            column :user_id
+            column :doctor_id          
           end
         end 
       end
@@ -29,13 +26,11 @@ ActiveAdmin.register_page "Dashboard" do
         end 
 
         panel "DOCTORS" do
-          table_for Doctor.all.order('id asc').limit(4).each do |contact|
+          table_for Doctor.all.order('id asc').limit(4).each do |doctor|
             column :first_name
             column :last_name
             column :email
             column :phone_no
-            column :user_id
-            column :appointment_id
           end
         end 
       end

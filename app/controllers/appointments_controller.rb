@@ -23,7 +23,8 @@ class AppointmentsController < ApplicationController
       flash[:success] =  "Appointment Booked! We'll Get To You Soon"
       redirect_to '/'
     else
-      render :new
+      flash[:error] =  "Appointment Not Booked! Check If You Provided Wrong Input!"
+      redirect_to '/appointments'
     end
   end
 
@@ -53,6 +54,6 @@ class AppointmentsController < ApplicationController
     end
 
     def appointment_params
-      params.require(:appointment).permit(:user_first_name, :user_last_name, :user_email, :user_phone_no, :doc_email, :booking_time)
+      params.require(:appointment).permit(:booking_time, :user_id, :doctor_id)
     end
 end
