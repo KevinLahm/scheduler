@@ -6,6 +6,7 @@ class CreateDoctors < ActiveRecord::Migration[6.1]
       t.string :email
       t.string :phone_no
       t.string :user_id
+      t.string :appointment_id
 
       t.timestamps
     end

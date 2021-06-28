@@ -5,5 +5,6 @@ class Appointment < ApplicationRecord
   validates :doc_email, presence: true
   validates :booking_time, presence: true
 
-  has_many :users, through: :doctors
+  has_many  :doctors
+  has_many  :users, through: :doctors
 end

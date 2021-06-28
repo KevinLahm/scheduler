@@ -5,4 +5,5 @@ class Doctor < ApplicationRecord
   validates :email, uniqueness: true, presence: true
 
   belongs_to :user
+  belongs_to :appointment
 end

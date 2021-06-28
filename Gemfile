@@ -38,3 +38,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'frontview'
 gem 'devise'
+gem 'activeadmin'
+gem 'active_admin_flat_skin'
+# gem 'pagy'
+# gem 'simple_form'
