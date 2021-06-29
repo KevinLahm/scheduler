@@ -1,4 +1,4 @@
-![alt text](assets/logo.png)
+# ![SCHEDULER LOGO](app/assets/images/logo.png)
 
 # SCHEDULER
 
