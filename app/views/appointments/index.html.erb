@@ -30,8 +30,9 @@
                 <div class="panel-body">
 
                   <%= form_for Appointment.new, url: {action: "create"} do |f| %>
-                    <div class='form-group'>
-                      <%= f.text_field :doctor_id, class: 'form-control input-md', placeholder: 'Choose Doctor' %>
+                    <div class='form-group' style="padding-bottom: 60px;">
+                      <label>Choose Doctor:&emsp;<span style="color:#2778bd;">Dr.</span></label> 
+                      <%= f.select :doctor_id, @doctors.collect { |doctor| [doctor.first_name, doctor.id] } %>    
                     </div>
 
                     <div class='form-group'>
@@ -57,22 +58,22 @@
 <section id="myappointments" class="home-section paddingtop-80">
   <div class="container">
     <h3 class="text-5 font-weight-400 d-flex align-items-center px-4 mb-4">My Appointments</h3>
-    <% if flash[:error] %>
-      <div class='alert alert-danger'><%= flash[:error] %></div>
-    <% end %>
     <% if flash[:success] %>
       <div class='alert alert-success'><%= flash[:success] %></div>
     <% end %>
     <ul class="responsive-table">
       <li class="table-header" style="text-align: center;">
-        <div class="col col-2" style="color: #fff;font-weight: bold;font-size: 20px;border-right: 2px solid #2c3e50;">Doctor</div>
+        <div class="col col-2" style="color: #fff;font-weight: bold;font-size: 20px;border-right: 2px solid #2c3e50;">Doctor(Email)</div>
         <div class="col col-3" style="color: #fff;font-weight: bold;font-size: 20px;border-right: 2px solid #2c3e50;">Booking Time</div>
         <div class="col col-4" style="color: #fff;font-weight: bold;font-size: 20px;">Delete</div>
       </li>
       <% @appointments.each do |appointment| %>
         <li class="table-row" style="text-align: center;">
-          <div class="col col-2" data-label="Doctor" style="color:#fff;font-weight:bold;font-size:16px;border-right: 2px solid #2c3e50;">
-            <%= appointment.doctor_id %>
+          <div class="col col-2" data-label="Doctor(Email)" style="color:#fff;font-weight:bold;font-size:16px;border-right: 2px solid #2c3e50;">
+            <% @doctors = Doctor.select(Arel.star).where(Doctor.arel_table[:id].eq(appointment.doctor_id)) %>
+            <% @doctors.each do |doctor| %>
+              <%= doctor.email %>
+            <% end %>
           </div>
           <div class="col col-3" data-label="Booking Time" style="color:#fff;font-weight:bold;font-size:16px;border-right: 2px solid #2c3e50;">
             <%= appointment.booking_time %>
@@ -83,6 +84,7 @@
         </li>
       <% end %>
     </ul>
+    <i><%= pagy_bootstrap_nav(@pagy).html_safe %></i>
   </div>
 </section>
 <!-- /Section: boxes -->

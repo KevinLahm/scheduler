@@ -15,17 +15,22 @@
                   <%= current_user.first_name %> <%= current_user.last_name %>
                 </span>
               </h5>
-              <h6 class="h-light">
-                <%= link_to "Sign Out", destroy_user_session_path, :class => "custom_button", method: :delete %>
-              </h6>
             </div>
             <div class="well well-trans">
               <div class="wow fadeInRight" data-wow-delay="0.1s">
                 <ul class="lead-list">
                   <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Book Appointments Easily</strong><br />Click The Button To Proceed! <i class="fas fa-hand-point-right"></i></span></li>
                 </ul>
+                <ul class="lead-list">
+                  <li><span class="fa fa-thumbs-up fa-2x icon-success"></span> <span class="list"><strong>Have Already Booked Appointments??</strong><br />
+                  Click The Button Below <i class="fas fa-hand-point-down"></i></span></li>
+                  &emsp;&emsp;&emsp;<%= link_to " View Your Appointments", '/appointments/#myappointments', :class => "custom_button fas fa-list" %>
+                </ul>
               </div>
             </div>
+            <h6 class="h-light">
+              <%= link_to " Sign Out", destroy_user_session_path, :class => "custom_button fa fa-sign-out-alt", method: :delete %>
+            </h6>
           </div>
           <div class="col-lg-6">
             <div class="form-wrapper">

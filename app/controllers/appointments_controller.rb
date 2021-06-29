@@ -2,8 +2,9 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[ show edit update destroy ]
 
   def index
-    @appointments = current_user.appointments.all if current_user
-    # @appointments = Appointment.all
+    # @appointments = current_user.appointments.all if current_user
+    @pagy, @appointments = pagy(current_user.appointments.all.order('created_at ASC'), items: 4) if current_user
+    @doctors = Doctor.all
   end
 
   def show
