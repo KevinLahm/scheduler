@@ -1,3 +1,5 @@
+![alt text](assets/logo.png)
+
 # SCHEDULER
 
 This is an app where a user can track medical appointments with different doctors
@@ -24,15 +26,18 @@ Create, Migrate and Seed the Database using:
 Step 4:
 Run the rails server using:
 
-	rails s   (Afterwards, go to the link 'localhost:3000' in your favourite browser to access the app.)
+	rails s   
+
+(Afterwards, go to the link 'localhost:3000' in your favourite browser to access the app.)
 
 N/B: If you find this error 'Webpacker::Manifest::MissingEntryError...' Then run the line below in terminal
 
 	bundle exec rake webpacker:install
 
-Redister and access the user dashboard.
+Register and access the user dashboard.
 
-Book appointments by selecting the doctor in the drop-down. View the appointments also so as to keep track of them.
+Book appointments by selecting the doctor in the drop-down. 
+View the appointments and keep track of them.
 
 To access Admin panel, go to:
 
@@ -42,7 +47,30 @@ To access Admin panel, go to:
 
 In the admin panel you have the power to Create, Read, Update and Delete.
 
-That's it
+## That's it
+
+                             \
+                            / \
+                           /   \
+                          /    |
+                         /     |
+                        /     /
+                      _/     /
+    ___________      /      /
+          |   |_____/      /_________
+          |   |    /      /\___      \
+          |   |   /        /  /      |
+          |   |  /        /__/_______/__
+          |   | |     ___ /             \
+          /   | |    /  /               |
+         /    | |   /__/________________/
+        /     | |      ___/           \
+       /  ___ | |     /  /            |
+      /  [___]|_|    /__/_____________/
+     /_____/     \    / /          |   
+                  \  /_/___________/
+                   \_________/
+
 
 	voilà
 
