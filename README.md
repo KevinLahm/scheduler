@@ -1,7 +1,5 @@
 # ![SCHEDULER LOGO](app/assets/images/logo.png)
 
-# SCHEDULER
-
 This is an app where a user can track medical appointments with different doctors
 (models: user, doctor, appointment). 
 
