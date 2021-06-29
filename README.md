@@ -17,9 +17,9 @@ cd into project directory, i.e
 	cd scheduler
 
 Step 3:
-Migrate the Database using:
+Create, Migrate and Seed the Database using:
 
-	rails db:create db:migrate
+	rails db:create db:migrate db:seed
 
 Step 4:
 Run the rails server using:
@@ -30,6 +30,18 @@ N/B: If you find this error 'Webpacker::Manifest::MissingEntryError...' Then run
 
 	bundle exec rake webpacker:install
 
+Redister and access the user dashboard.
+
+Book appointments by selecting the doctor in the drop-down. View the appointments also so as to keep track of them.
+
+To access Admin panel, go to:
+
+	localhost:3000/admin
+	email: admin@example.com
+	password: password
+
+In the admin panel you have the power to Create, Read, Update and Delete.
+
 That's it
 
 	voilà
@@ -38,7 +50,7 @@ That's it
 
 In config/database.yml remember to subtitute these commented lines:
 
-	<!-- 	username: your_user_name
-				password: your_password  -->
+	username: your_user_name
+	password: your_password
 
 With your real username and password!
